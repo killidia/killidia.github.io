@@ -7,16 +7,15 @@ theme = "anemone"
 
 default_language = "fr"
 
-generate_feed = true
+generate_feeds = true
 
 [extra]
 
 header_nav = [
-    { name = "/home/", url = "/" },
-    { name = "/devlogs/", url = "/devlogs" },
+    { name_fr = "/Accueil/", url = "/" },
+    { name_fr = "/devlogs/", url = "/devlogs" },
 ]
 
 [markdown]
 highlight_code = true
 highlight_theme = "two-dark"
-
