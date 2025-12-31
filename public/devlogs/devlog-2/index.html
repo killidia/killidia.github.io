@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://killidia.github.io/rss.xml">
+        
+        <title>Dylan Adam | Devlog #2 - Deux ans plus tard : un prototype jouable, des galères… et un nouveau souffle</title>
+
+        <link rel="preload" href="https://killidia.github.io/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://killidia.github.io/css/style.css">
+        <link rel="stylesheet" href="https://killidia.github.io/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;killidia.github.io/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;Accueil&#x2F;
+            </a>
+            
+            <a href="&#x2F;devlogs" class="">
+                
+                &#x2F;devlogs&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://killidia.github.io/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://killidia.github.io/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<article class="post">
+    <header class="post-header">
+        
+        <time datetime="2025-12-31">Published on:
+            <span class="accent-data">2025-12-31</span>
+        </time>
+        
+
+        
+
+        <h1>Devlog #2 - Deux ans plus tard : un prototype jouable, des galères… et un nouveau souffle</h1>
+    </header>
+
+
+<div class="toc-container">
+    <h2>Table of content</h2>
+    <ul>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#toujours-bevy-toujours-rust">Toujours Bevy, toujours Rust</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#la-couche-reseau-bienvenue-dans-la-douleur">La couche réseau : bienvenue dans la douleur</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#les-mecaniques-de-jeu-etonnamment-rapide">Les mécaniques de jeu : étonnamment rapide</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#repenser-le-gameplay-moins-d-aleatoire-plus-de-sens">Repenser le gameplay : moins d’aléatoire, plus de sens</a>
+            
+            <ul>
+                
+                <li><a href="https://killidia.github.io/devlogs/devlog-2/#la-solution-les-pnj">La solution : les PNJ</a></li>
+                
+            </ul>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#bevy-evolue-vite-tres-vite">Bevy évolue vite… très vite</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#un-prototype-moche-mais-complet">Un prototype moche... mais complet !</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#le-vrai-mur">Le vrai mur</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#le-virage-de-la-3d-a-la-2-5d">Le virage : de la 3D à la 2.5D</a>
+            
+        </li>
+        
+        <li>
+            <a href="https://killidia.github.io/devlogs/devlog-2/#conclusion">Conclusion</a>
+            
+        </li>
+        
+    </ul>
+</div>
+
+
+    <div class="post-content">
+        <p>Bonjour à toutes et à tous,</p>
+<p>Il s’est passé presque deux ans entre le dernier post sur ce blog et celui que vous êtes en train de lire.
+Autant dire que ce n’est pas vraiment la régularité que j’avais promise à l’époque 😅</p>
+<p><img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDlqNmZjZ3g4djF3amd2dzZuOW9rN254dzY5Z2hmenpiOTU2ZzRubyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3yJNOJ2NQmu4w/giphy.gif" alt="oups" /></p>
+<p>La vérité, c’est que durant cette période, il y a eu pas mal de choses compliquées côté perso, des changements de situation, des moments où il a fallu mettre le projet de côté… et d’autres où j’ai avancé par petites touches, souvent dans l’ombre.
+Mais malgré tout ça, <strong>Villager</strong> n’est pas mort. Bien au contraire.</p>
+<p>Aujourd’hui, j’ai enfin quelque chose de concret à vous montrer : un prototype jouable.
+Et ce devlog est là pour vous raconter le chemin (parfois très chaotique) pour y arriver, les galères rencontrées, les choix que j’ai dû remettre en question, et surtout où en est le projet aujourd’hui.</p>
+<h2 id="toujours-bevy-toujours-rust">Toujours Bevy, toujours Rust</h2>
+<p>Première chose importante : le moteur n’a pas changé ! Villager tourne toujours sur Bevy, en Rust.</p>
+<p>Mais il faut bien comprendre une chose : en 2023–2024, Bevy n’était clairement pas là où il est aujourd’hui !</p>
+<p>À l’époque :</p>
+<ul>
+<li>pas d'éditeur visuel</li>
+<li>la 3D avait encore beaucoup de lacunes,</li>
+<li>certains effets de lumière manquaient,</li>
+<li>l’outillage était parfois très brut,</li>
+<li>et beaucoup de choses demandaient… beaucoup de code à la main.</li>
+</ul>
+<p>J’ai donc dû plonger assez profondément dans :</p>
+<ul>
+<li>le rendu 3D,</li>
+<li>la génération des scènes,</li>
+<li>l’affichage,</li>
+<li>la lumière,</li>
+<li>l’occlusion,</li>
+<li>le réseau</li>
+<li>chat vocal</li>
+<li>etc.</li>
+</ul>
+<p>C’était formateur, passionnant et c'était exactement ce que je cherchais en commençant <strong>Villager</strong>. Mais il faut admettre que c'était aussi chronophage et pas compatible avec l'idée de "sortir un jeu".</p>
+<h2 id="la-couche-reseau-bienvenue-dans-la-douleur">La couche réseau : bienvenue dans la douleur</h2>
+<p>Ensuite est venue la partie réseau.</p>
+<p>Et là, clairement, ce n’était pas mon terrain de jeu préféré à la base. Je me suis rendu compte qu'il y avait énormément de notions différentes qu'on détaillera dans un devlog dédié.</p>
+<p>Dans Bevy, tout fonctionne par plugins. J’ai donc fini par trouver un premier plugin qui m’a aidé à poser une base de serveur temps réel, mais pour le reste… il a fallu tout faire à la main :</p>
+<ul>
+<li>réplication des entités,</li>
+<li>synchronisation des états,</li>
+<li>gestion des joueurs,</li>
+<li>sécurité minimale,</li>
+<li>etc.</li>
+</ul>
+<p>À cela se sont ajoutées toutes les fonctionnalités “hors gameplay pur” :</p>
+<ul>
+<li>création de lobbies,</li>
+<li>gestion des utilisateurs et des listes d'amis,</li>
+<li>gestion des groupes d’amis,</li>
+<li>matchmaking simple (mais efficace),</li>
+<li>lancement automatique des parties dès qu’un nombre minimum de joueurs est atteint.</li>
+</ul>
+<p>L’objectif était clair :</p>
+<p>👉 cliquer sur “<strong>Jouer</strong>” et jouer, sans avoir à s’échanger des codes de lobby pendant 10 minutes.</p>
+<h2 id="les-mecaniques-de-jeu-etonnamment-rapide">Les mécaniques de jeu : étonnamment rapide</h2>
+<p>Une fois toute l’infrastructure en place, j’ai attaqué le cœur du jeu.
+Et contre toute attente, les mécaniques de gameplay ont été la partie la plus rapide.</p>
+<p><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDZrODdrMTJ6bHlpbTk5c3EzZnE1OTdiYzJnamJmMHd3dW02OGh3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/B1uajA01vvL91Urtsp/giphy.gif" alt="fast" /></p>
+<p>Avec le design pattern ECS, la gestion des états, le scheduler et plein d'autres concepts de Bevy :</p>
+<ul>
+<li>déplacements des joueurs,</li>
+<li>spawn des joueurs,</li>
+<li>spawn des items,</li>
+<li>attribution des rôles,</li>
+<li>conditions de victoire / défaite,</li>
+<li>annonces in game,</li>
+<li>etc...</li>
+</ul>
+<p>👉 tout ça m’a pris environ deux mois. ce qui est... honnête...</p>
+<p>Comme quoi, quand les fondations sont solides, le gameplay suit assez naturellement !</p>
+<h2 id="repenser-le-gameplay-moins-d-aleatoire-plus-de-sens">Repenser le gameplay : moins d’aléatoire, plus de sens</h2>
+<p>En avançant, je me suis rendu compte d’un gros problème de conception.</p>
+<p>À la base les villageois devaient fouiller la map afin de trouver des objets (Orbe de la Voyante, Épée du Chevalier, Arc de Cupidon, etc...) apparaissaient de manière totalement aléatoire.</p>
+<p>Sur le papier, ça semblait cool. En pratique… c’était trop aléatoire.</p>
+<p>Résultat :</p>
+<ul>
+<li>aucun point d’intérêt clair sur la map,</li>
+<li>un level design difficile à concevoir,</li>
+<li>et un gameplay peu intéressant pour les joueurs.</li>
+</ul>
+<p>J’ai donc décidé de revoir ça en profondeur.</p>
+<h3 id="la-solution-les-pnj">La solution : les PNJ</h3>
+<p>Plutôt que du full aléatoire, j’ai introduit des PNJ placés à des endroits précis de la map, avec une vraie réflexion sur la navigation et les zones clés.</p>
+<p>Le principe est le suivant :</p>
+<p>La partie se déroule sur une nuit, et à intervalles réguliers, certains PNJ « se réveillent ».</p>
+<p>Lorsqu’un PNJ est réveillé, un villageois peut aller lui parler pour récupérer un objet.</p>
+<p>Exemple concret :</p>
+<p>La Voyante est présente dès le début, au village, mais elle dort. Après un certain temps, elle se réveille, et un joueur peut alors récupérer l’Orbe de la Voyante en interagissant avec elle.</p>
+<p>Ce changement permet de créer des points d’intérêt sur la map, une navigation claire entre ces points, et oblige les villageois à se déplacer afin d’obtenir des objets.
+Cela permet également de créer des stratégies pour obtenir les objets ou, à l’inverse, piéger les autres joueurs.</p>
+<h2 id="bevy-evolue-vite-tres-vite">Bevy évolue vite… très vite</h2>
+<p>Bevy est un moteur qui évolue très vite, avec une grosse mise à jour tous les trois mois environ.</p>
+<p>Ce qui est très bien ! Les mises à jour sont conséquentes, et j’adore me prendre un café avec une petite madeleine devant le changelog, super bien rédigé et illustré.
+La communauté est grandissante, avec plein de plugins pour couvrir beaucoup de concepts qui pouvaient être manquants ou encore trop récents dans le moteur.</p>
+<p>Ceci dit, j’ai écrit des tonnes de lignes de code (très formateur) qui aujourd’hui ne servent plus à rien, comme par exemple :</p>
+<ul>
+<li>la couche réseau (il existe maintenant des plugins qui gèrent quasiment tout),</li>
+<li>des éléments d’UI comme les champs de texte, qui n’existaient pas du tout au début,</li>
+<li>plein de shaders pour avoir des bordures, des arrondis ou de meilleurs effets 3D,</li>
+<li>et tous les changements de version en version de Bevy, car étant un moteur en cours de développement, la syntaxe change assez régulièrement.</li>
+</ul>
+<h2 id="un-prototype-moche-mais-complet">Un prototype moche... mais complet !</h2>
+<p>Aujourd'hui d'un point de vue technique, le protype est terminé. J’ai même pu faire quelques tests avec mon cercle d'amis. Les resultats sont positifs et ça fait du bien après tant de galères !!</p>
+<p><img src="../images/devlog_2/lobby.png" alt="lobby" />
+<img src="../images/devlog_2/role_screen.png" alt="rol screen" />
+<img src="../images/devlog_2/in_game.png" alt="in_game" /></p>
+<p>Visuellement, ce n’est pas fou du tout : on est sur des tic-tac et des blocs gris.
+Mais la boucle de gameplay est complète, tout comme la gestion des groupes, le matchmaking et le chat vocal de proximité (qui a été une purge à développer !).</p>
+<h2 id="le-vrai-mur">Le vrai mur</h2>
+<p><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzZ0cmNkOGs4eHdzeDh6M3l0ZGk0bmNydnVkM29pZmJrdGRqaXd6OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mIvrv5Qe0kHlu/giphy.gif" alt="the wall" /></p>
+<p>Une fois le prototype fini, il était temps de chercher une direction artistique et cette partie m'a pris... des mois. Littéralement.</p>
+<p>pourquoi !?</p>
+<p>Et bien, j'ai certe des bases en dessin, des bases en modélisation 3d mais ce n'est ni mon métier, ni ma passion ! Et entre les concepts art, la modélisation 3d, les animations, la recherche d'un style cohérent et personnel, c'était beaucoup trop pour moi...</p>
+<p>Resultat : démotivation, stagnation, et très peu de code écrit pendant près d'un an.</p>
+<h2 id="le-virage-de-la-3d-a-la-2-5d">Le virage : de la 3D à la 2.5D</h2>
+<p>Après pas mal de remises en question, j’ai changé d’approche.</p>
+<p>Je suis passé par une idée de vue 2D top-down façon RPG (pokemon ou viexu Zelda), puis finalement à un entre-deux : la 2.5D.</p>
+<p>Le principe :</p>
+<ul>
+<li>un environnement en 3D (pour la lumière, les ombres, la profondeur),</li>
+<li>des assets en 2D (sprites sur des plans verticaux).</li>
+</ul>
+<p>c'est un style qu’on peut retrouver dans des jeux comme Cult of the Lamb ou Don’t Starve que j'adore.</p>
+<p><img src="../images/devlog_2/cotl.jpg" alt="cotl" />
+<img src="../images/devlog_2/dont_starve.jpg" alt="don&#39;t starve" /></p>
+<p>j'ai donc commencé à designer ma map, les points d'intérêt, créer quelques assets (je détaillerai mon process de création dans un devlog) et aujourd’hui, j’ai :</p>
+<ul>
+<li>une direction artistique qui me plaît et qui me ressemble,</li>
+<li>quelque chose de cohérent,</li>
+<li>et surtout… l’envie de continuer.</li>
+</ul>
+<p><img src="../images/devlog_2/my_map.png" alt="work in progress map" /></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Deux ans plus tard :</p>
+<ul>
+<li>Villager est toujours en vie,</li>
+<li>le prototype est terminé,</li>
+<li>la direction artistique est enfin trouvée,</li>
+<li>et la motivation est revenue.</li>
+</ul>
+<p>Merci encore de me suivre,
+et à très vite dans le prochain devlog dans deux ans ! (je rigole 😅)</p>
+<p>Dylan</p>
+
+    </div>
+
+    
+</article>
+
+        </main>
+
+        <footer>
+            <hr>
+<div id="footer-container">
+    <p>Made using <a target="_blank" rel="noopener noreferrer" href="https://github.com/Speyll/anemone">anemone</a> Zola theme</p>
+</div>
+
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://killidia.github.io/js/script.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Dylan Adam</title>
+    <link href="https://killidia.github.io/atom.xml" rel="self"/>
+    <link href="https:&#x2F;&#x2F;killidia.github.io"/>
+    <updated>2025-12-31T14:43:03+0100</updated>
+    <id>https:&#x2F;&#x2F;killidia.github.io</id>
+
+    
+    
+    
+    
+    
+    
+        
+        
+            
+            <entry>
+                <title>Devlog #2 - Deux ans plus tard : un prototype jouable, des galères… et un nouveau souffle</title>
+                <link href="https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;devlog-2&#x2F;"/>
+                <updated>2025-12-31T00:00:00+0000</updated>
+                <id>https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;devlog-2&#x2F;</id>
+                <content type="html">&amp;lt;p&amp;gt;Bonjour à toutes et à tous,&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Il s’est passé presque deux ans entre le dernier post sur ce blog et celui que vous êtes en train de lire.
+Autant dire que ce n’est pas vraiment la régularité que j’avais promise à l’époque 😅&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;https:&amp;#x2F;&amp;#x2F;media2.giphy.com&amp;#x2F;media&amp;#x2F;v1.Y2lkPTc5MGI3NjExaDlqNmZjZ3g4djF3amd2dzZuOW9rN254dzY5Z2hmenpiOTU2ZzRubyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw&amp;#x2F;3yJNOJ2NQmu4w&amp;#x2F;giphy.gif&amp;quot; alt=&amp;quot;oups&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;La vérité, c’est que durant cette période, il y a eu pas mal de choses compliquées côté perso, des changements de situation, des moments où il a fallu mettre le projet de côté… et d’autres où j’ai avancé par petites touches, souvent dans l’ombre.
+Mais malgré tout ça, &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt; n’est pas mort. Bien au contraire.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Aujourd’hui, j’ai enfin quelque chose de concret à vous montrer : un prototype jouable.
+Et ce devlog est là pour vous raconter le chemin (parfois très chaotique) pour y arriver, les galères rencontrées, les choix que j’ai dû remettre en question, et surtout où en est le projet aujourd’hui.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;toujours-bevy-toujours-rust&amp;quot;&amp;gt;Toujours Bevy, toujours Rust&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Première chose importante : le moteur n’a pas changé ! Villager tourne toujours sur Bevy, en Rust.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Mais il faut bien comprendre une chose : en 2023–2024, Bevy n’était clairement pas là où il est aujourd’hui !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;À l’époque :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;pas d&amp;#x27;éditeur visuel&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;la 3D avait encore beaucoup de lacunes,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;certains effets de lumière manquaient,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;l’outillage était parfois très brut,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;et beaucoup de choses demandaient… beaucoup de code à la main.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;J’ai donc dû plonger assez profondément dans :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;le rendu 3D,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;la génération des scènes,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;l’affichage,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;la lumière,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;l’occlusion,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;le réseau&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;chat vocal&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;etc.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;C’était formateur, passionnant et c&amp;#x27;était exactement ce que je cherchais en commençant &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt;. Mais il faut admettre que c&amp;#x27;était aussi chronophage et pas compatible avec l&amp;#x27;idée de &amp;quot;sortir un jeu&amp;quot;.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;la-couche-reseau-bienvenue-dans-la-douleur&amp;quot;&amp;gt;La couche réseau : bienvenue dans la douleur&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Ensuite est venue la partie réseau.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Et là, clairement, ce n’était pas mon terrain de jeu préféré à la base. Je me suis rendu compte qu&amp;#x27;il y avait énormément de notions différentes qu&amp;#x27;on détaillera dans un devlog dédié.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Dans Bevy, tout fonctionne par plugins. J’ai donc fini par trouver un premier plugin qui m’a aidé à poser une base de serveur temps réel, mais pour le reste… il a fallu tout faire à la main :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;réplication des entités,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;synchronisation des états,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;gestion des joueurs,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;sécurité minimale,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;etc.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;À cela se sont ajoutées toutes les fonctionnalités “hors gameplay pur” :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;création de lobbies,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;gestion des utilisateurs et des listes d&amp;#x27;amis,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;gestion des groupes d’amis,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;matchmaking simple (mais efficace),&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;lancement automatique des parties dès qu’un nombre minimum de joueurs est atteint.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;L’objectif était clair :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;👉 cliquer sur “&amp;lt;strong&amp;gt;Jouer&amp;lt;&amp;#x2F;strong&amp;gt;” et jouer, sans avoir à s’échanger des codes de lobby pendant 10 minutes.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;les-mecaniques-de-jeu-etonnamment-rapide&amp;quot;&amp;gt;Les mécaniques de jeu : étonnamment rapide&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Une fois toute l’infrastructure en place, j’ai attaqué le cœur du jeu.
+Et contre toute attente, les mécaniques de gameplay ont été la partie la plus rapide.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;https:&amp;#x2F;&amp;#x2F;media0.giphy.com&amp;#x2F;media&amp;#x2F;v1.Y2lkPTc5MGI3NjExeDZrODdrMTJ6bHlpbTk5c3EzZnE1OTdiYzJnamJmMHd3dW02OGh3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw&amp;#x2F;B1uajA01vvL91Urtsp&amp;#x2F;giphy.gif&amp;quot; alt=&amp;quot;fast&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Avec le design pattern ECS, la gestion des états, le scheduler et plein d&amp;#x27;autres concepts de Bevy :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;déplacements des joueurs,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;spawn des joueurs,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;spawn des items,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;attribution des rôles,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;conditions de victoire &amp;#x2F; défaite,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;annonces in game,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;etc...&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;👉 tout ça m’a pris environ deux mois. ce qui est... honnête...&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Comme quoi, quand les fondations sont solides, le gameplay suit assez naturellement !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;repenser-le-gameplay-moins-d-aleatoire-plus-de-sens&amp;quot;&amp;gt;Repenser le gameplay : moins d’aléatoire, plus de sens&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;En avançant, je me suis rendu compte d’un gros problème de conception.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;À la base les villageois devaient fouiller la map afin de trouver des objets (Orbe de la Voyante, Épée du Chevalier, Arc de Cupidon, etc...) apparaissaient de manière totalement aléatoire.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Sur le papier, ça semblait cool. En pratique… c’était trop aléatoire.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Résultat :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;aucun point d’intérêt clair sur la map,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;un level design difficile à concevoir,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;et un gameplay peu intéressant pour les joueurs.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;J’ai donc décidé de revoir ça en profondeur.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;la-solution-les-pnj&amp;quot;&amp;gt;La solution : les PNJ&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;Plutôt que du full aléatoire, j’ai introduit des PNJ placés à des endroits précis de la map, avec une vraie réflexion sur la navigation et les zones clés.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Le principe est le suivant :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;La partie se déroule sur une nuit, et à intervalles réguliers, certains PNJ « se réveillent ».&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Lorsqu’un PNJ est réveillé, un villageois peut aller lui parler pour récupérer un objet.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Exemple concret :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;La Voyante est présente dès le début, au village, mais elle dort. Après un certain temps, elle se réveille, et un joueur peut alors récupérer l’Orbe de la Voyante en interagissant avec elle.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Ce changement permet de créer des points d’intérêt sur la map, une navigation claire entre ces points, et oblige les villageois à se déplacer afin d’obtenir des objets.
+Cela permet également de créer des stratégies pour obtenir les objets ou, à l’inverse, piéger les autres joueurs.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;bevy-evolue-vite-tres-vite&amp;quot;&amp;gt;Bevy évolue vite… très vite&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Bevy est un moteur qui évolue très vite, avec une grosse mise à jour tous les trois mois environ.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Ce qui est très bien ! Les mises à jour sont conséquentes, et j’adore me prendre un café avec une petite madeleine devant le changelog, super bien rédigé et illustré.
+La communauté est grandissante, avec plein de plugins pour couvrir beaucoup de concepts qui pouvaient être manquants ou encore trop récents dans le moteur.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Ceci dit, j’ai écrit des tonnes de lignes de code (très formateur) qui aujourd’hui ne servent plus à rien, comme par exemple :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;la couche réseau (il existe maintenant des plugins qui gèrent quasiment tout),&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;des éléments d’UI comme les champs de texte, qui n’existaient pas du tout au début,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;plein de shaders pour avoir des bordures, des arrondis ou de meilleurs effets 3D,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;et tous les changements de version en version de Bevy, car étant un moteur en cours de développement, la syntaxe change assez régulièrement.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;h2 id=&amp;quot;un-prototype-moche-mais-complet&amp;quot;&amp;gt;Un prototype moche... mais complet !&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Aujourd&amp;#x27;hui d&amp;#x27;un point de vue technique, le protype est terminé. J’ai même pu faire quelques tests avec mon cercle d&amp;#x27;amis. Les resultats sont positifs et ça fait du bien après tant de galères !!&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;lobby.png&amp;quot; alt=&amp;quot;lobby&amp;quot; &amp;#x2F;&amp;gt;
+&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;role_screen.png&amp;quot; alt=&amp;quot;rol screen&amp;quot; &amp;#x2F;&amp;gt;
+&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;in_game.png&amp;quot; alt=&amp;quot;in_game&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Visuellement, ce n’est pas fou du tout : on est sur des tic-tac et des blocs gris.
+Mais la boucle de gameplay est complète, tout comme la gestion des groupes, le matchmaking et le chat vocal de proximité (qui a été une purge à développer !).&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;le-vrai-mur&amp;quot;&amp;gt;Le vrai mur&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;https:&amp;#x2F;&amp;#x2F;media0.giphy.com&amp;#x2F;media&amp;#x2F;v1.Y2lkPTc5MGI3NjExYzZ0cmNkOGs4eHdzeDh6M3l0ZGk0bmNydnVkM29pZmJrdGRqaXd6OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw&amp;#x2F;mIvrv5Qe0kHlu&amp;#x2F;giphy.gif&amp;quot; alt=&amp;quot;the wall&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Une fois le prototype fini, il était temps de chercher une direction artistique et cette partie m&amp;#x27;a pris... des mois. Littéralement.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;pourquoi !?&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Et bien, j&amp;#x27;ai certe des bases en dessin, des bases en modélisation 3d mais ce n&amp;#x27;est ni mon métier, ni ma passion ! Et entre les concepts art, la modélisation 3d, les animations, la recherche d&amp;#x27;un style cohérent et personnel, c&amp;#x27;était beaucoup trop pour moi...&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Resultat : démotivation, stagnation, et très peu de code écrit pendant près d&amp;#x27;un an.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;le-virage-de-la-3d-a-la-2-5d&amp;quot;&amp;gt;Le virage : de la 3D à la 2.5D&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Après pas mal de remises en question, j’ai changé d’approche.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Je suis passé par une idée de vue 2D top-down façon RPG (pokemon ou viexu Zelda), puis finalement à un entre-deux : la 2.5D.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Le principe :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;un environnement en 3D (pour la lumière, les ombres, la profondeur),&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;des assets en 2D (sprites sur des plans verticaux).&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;c&amp;#x27;est un style qu’on peut retrouver dans des jeux comme Cult of the Lamb ou Don’t Starve que j&amp;#x27;adore.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;cotl.jpg&amp;quot; alt=&amp;quot;cotl&amp;quot; &amp;#x2F;&amp;gt;
+&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;dont_starve.jpg&amp;quot; alt=&amp;quot;don&amp;amp;#39;t starve&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;j&amp;#x27;ai donc commencé à designer ma map, les points d&amp;#x27;intérêt, créer quelques assets (je détaillerai mon process de création dans un devlog) et aujourd’hui, j’ai :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;une direction artistique qui me plaît et qui me ressemble,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;quelque chose de cohérent,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;et surtout… l’envie de continuer.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_2&amp;#x2F;my_map.png&amp;quot; alt=&amp;quot;work in progress map&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;conclusion&amp;quot;&amp;gt;Conclusion&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;p&amp;gt;Deux ans plus tard :&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Villager est toujours en vie,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;le prototype est terminé,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;la direction artistique est enfin trouvée,&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;li&amp;gt;et la motivation est revenue.&amp;lt;&amp;#x2F;li&amp;gt;
+&amp;lt;&amp;#x2F;ul&amp;gt;
+&amp;lt;p&amp;gt;Merci encore de me suivre,
+et à très vite dans le prochain devlog dans deux ans ! (je rigole 😅)&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Dylan&amp;lt;&amp;#x2F;p&amp;gt;
+</content>
+            </entry>
+            
+        
+            
+            <entry>
+                <title>Devlog #1 - Villager : le tout, tout début !</title>
+                <link href="https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;devlog-1-villager-le-tout-debut&#x2F;"/>
+                <updated>2023-08-09T00:00:00+0000</updated>
+                <id>https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;devlog-1-villager-le-tout-debut&#x2F;</id>
+                <content type="html">&amp;lt;p&amp;gt;Chers lecteurs et lectrices,&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Dans ce deuxième devlog, je souhaite partager avec vous les prémices de l&amp;#x27;idée qui a donné naissance à Villager ainsi que mes premiers pas dans le développement de jeu vidéo.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;1-les-premices&amp;quot;&amp;gt;1. Les prémices&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;h3 id=&amp;quot;inspiration-1-among-us&amp;quot;&amp;gt;Inspiration 1 : Among Us&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;La première fois que j&amp;#x27;ai pensé à Villager, c&amp;#x27;est lors d&amp;#x27;une soirée assez frustrante à jouer à Among Us, où j&amp;#x27;ai été innocent tout au long de la soirée et où je me faisais éliminer systématiquement dès le début. Je me suis donc dit &amp;quot;et si nous avions un jeu similaire où les innocents pourraient se défendre un peu plus à la manière de Garry&amp;#x27;s Mod et son excellent mode Murder qui donne un pistolet à un des innocents&amp;quot;. Et cette simple idée a été le point de départ de ce qui allait devenir Villager.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;inspiration-2-les-battle-royal&amp;quot;&amp;gt;Inspiration 2 : Les Battle Royal&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;Ma deuxième source d&amp;#x27;inspiration majeure pour Villager provient des jeux Battle Royal, avec Fortnite en tête, étant un joueur assidu moi-même. J&amp;#x27;ai trouvé l&amp;#x27;idée de permettre aux &amp;quot;innocents&amp;quot; de chercher des armes et des artefacts qui seraient éparpillés aléatoirement à la manière d&amp;#x27;un Battle Royal pour se défendre contre les &amp;quot;imposteurs&amp;quot; super intéressant et proposeraient un gameplay plus sympa que de faire des quêtes en attendant de se faire éliminer comme sur Among Us (oui, j&amp;#x27;ai toujours un peu de haine...).&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;inspiration-3-les-loup-garou-de-thiercelieux&amp;quot;&amp;gt;Inspiration 3 : Les Loup-Garou de Thiercelieux&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;Après avoir eu l&amp;#x27;idée, après avoir trouvé un début de gameplay sympathique, il me fallait un univers captivant pour que les joueurs puissent se plonger pleinement dans l&amp;#x27;expérience du jeu. En tant que grand fan des Loup-Garou de Thiercelieux, au point d&amp;#x27;avoir un tatouage représentant l&amp;#x27;un des rôles du jeu, j&amp;#x27;ai pensé que ce serait une excellente base pour mon projet.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;en-resume&amp;quot;&amp;gt;En résumé&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_1&amp;#x2F;inspirations.png&amp;quot; alt=&amp;quot;inspirations&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;En résumé ça donne quoi, Villager est un jeu d&amp;#x27;imposteur ou les villageois devront survivre aux loups-garous et les loups-garous devront éliminer tous les villageois avant la fin de la nuit. Les villageois devront se faire confiance entre eux, récupérer des armes pour se défendre ou trouver des artefacts qui représenteront les différents rôles que l&amp;#x27;on retrouve dans les loups-garous de thiercelieux comme l&amp;#x27;orbe de la voyante, l&amp;#x27;épée rouiller du chevalier ou encore l&amp;#x27;arc de cupidon. Les Loups-garous devront quant à eux user de ruse et de tromperie pour réussir leur sombre dessein.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Le gameplay sera sublimé par une direction artistique minimaliste, mais super efficace, par une ambiance prenante et légèrement oppressante, ainsi que des fonctionnalités comme le chat vocal de proximité pour des interactions sociale efficace (Bon... sans trop vous spoiler, c&amp;#x27;est facile à écrire, mais pas facile à faire !!) !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Il m&amp;#x27;aura fallu quelques mois pour en arriver là et ce n&amp;#x27;était que le tout début du projet. Après avoir posé un premier gameplay sur &amp;quot;papier&amp;quot; je me suis naturellement dit qu&amp;#x27;il fallait que je développe un prototype afin d&amp;#x27;expérimenter et de vérifier que mon idée était viable. C&amp;#x27;est le moment de faire les premiers choix techniques !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h2 id=&amp;quot;2-premier-choix-technique-le-moteur&amp;quot;&amp;gt;2. Premier choix technique : Le moteur&amp;lt;&amp;#x2F;h2&amp;gt;
+&amp;lt;h3 id=&amp;quot;ureal-engine-vs-unity&amp;quot;&amp;gt;Ureal Engine vs Unity&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_1&amp;#x2F;ue-vs-unity.png&amp;quot; alt=&amp;quot;ue-vs-unity&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;En m&amp;#x27;engageant dans le domaine du jeu vidéo, je ne voulais pas juste sortir mon jeu pour combler une simple frustration, mais je voulais vraiment en profiter pour en apprendre un maximum sur le développement de jeu vidéo. Pour cela, j&amp;#x27;étais à la recherche d&amp;#x27;un moteur de jeu qui me permettrait d&amp;#x27;explorer en profondeur les différentes couches de la création de jeux, des mécanismes de base jusqu&amp;#x27;aux aspects avancés. C&amp;#x27;est ainsi que j&amp;#x27;ai exclu dès le départ des géants comme Unreal Engine et Unity, qui, bien qu&amp;#x27;ils offrent des fonctionnalités puissantes, demandent des licences coûteuses pour la commercialisation.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;godot&amp;quot;&amp;gt;Godot ?&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_1&amp;#x2F;godot.png&amp;quot; alt=&amp;quot;godot&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Après avoir écarté UE et Unity, je me suis penché sur d&amp;#x27;autres options open source. Bien que Godot soit un excellent moteur, il ne répondait pas à mon premier critère : la possibilité d&amp;#x27;apprendre en partant de presque zéro. De plus, au moment de mon choix, Godot avait encore des gros problèmes de performances, ce qui constituait un élément rédhibitoire pour moi.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;le-langage-rust&amp;quot;&amp;gt;Le langage Rust&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;En tant que développeur, le choix du langage de programmation est essentiel pour se sentir à l&amp;#x27;aise et productif. Pour ma part, Rust est mon langage préféré &amp;lt;strong&amp;gt;DE TOUS LES TEMPS !!!!!!&amp;lt;&amp;#x2F;strong&amp;gt; je me calme... Il offre un équilibre parfait entre performance, sécurité et ergonomie, il possède beaucoup de fonctionnalité pratique et un peu overkill, son écosystème est très vaste et les personnes qui le peuplent sont incroyablement gentils et intelligents. J&amp;#x27;avais donc pour objectif de monter en compétences sur Rust tout en développant des jeux, et cela a grandement influencé mon choix de moteur de jeu.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;h3 id=&amp;quot;le-moteur-bevy&amp;quot;&amp;gt;Le moteur Bevy&amp;lt;&amp;#x2F;h3&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;..&amp;#x2F;images&amp;#x2F;devlog_1&amp;#x2F;bevy_logo_dark.png&amp;quot; alt=&amp;quot;bevy-game-engine&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;C&amp;#x27;est alors que j&amp;#x27;ai découvert Bevy, une véritable perle rare répondant à tous mes critères et bien plus encore. Tout d&amp;#x27;abord, Bevy est un moteur de jeu open source, ce qui signifie que je peux accéder à son code source et explorer en profondeur son fonctionnement interne, ce qui est crucial pour mon apprentissage.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;En outre, Bevy se démarque par ses performances grâce à sa conception basée sur le design pattern ECS (Entity-Component-System), le moteur gère efficacement les entités et les composants, optimisant ainsi le rendu et le traitement des données, ce qui est essentiel pour créer des jeux fluides et réactifs (mais on y reviendra plus en détail prochainement).&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Choisir Bevy me permettait également de m&amp;#x27;impliquer dans son développement. Le moteur étant en cours de développement actif, j&amp;#x27;avais la possibilité de contribuer à son évolution, ce qui représentait une chance inestimable pour approfondir mes connaissances et partager ma passion avec la communauté Bevy.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;En conclusion, en choisissant Bevy, j&amp;#x27;ai trouvé le moteur de jeu idéal pour réaliser mon projet tout en apprenant un maximum de choses dans le développement de jeu vidéo. Grâce à sa gratuité, son statut open source, sa performance, son design pattern ECS et son implémentation en Rust, Bevy réunit tous les éléments clés qui ont guidé mon choix.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;https:&amp;#x2F;&amp;#x2F;media.giphy.com&amp;#x2F;media&amp;#x2F;3o6Ei2yv8fqpR3nJG8&amp;#x2F;giphy.gif&amp;quot; alt=&amp;quot;work hard&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Le moteur de jeu choisi, il est grand temps de commencer le développement du premier prototype, mais nous verront ça dans le prochain devlog qui y sera consacré et de toutes les galères que j&amp;#x27;ai pu rencontrer pendant ce processus ! Je tiens également à préciser qu&amp;#x27;à partir de maintenant les devlogs seront un peu plus techniques.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Merci d&amp;#x27;avoir pris le temps de me lire !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;A la prochaine,&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Dylan.&amp;lt;&amp;#x2F;p&amp;gt;
+</content>
+            </entry>
+            
+        
+            
+            <entry>
+                <title>Devlog #0 - Introduction</title>
+                <link href="https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;introduction&#x2F;"/>
+                <updated>2023-07-13T00:00:00+0000</updated>
+                <id>https:&#x2F;&#x2F;killidia.github.io&#x2F;devlogs&#x2F;introduction&#x2F;</id>
+                <content type="html">&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;https:&amp;#x2F;&amp;#x2F;media.giphy.com&amp;#x2F;media&amp;#x2F;xTiIzJSKB4l7xTouE8&amp;#x2F;giphy.gif&amp;quot; alt=&amp;quot;Hello Gif&amp;quot; &amp;#x2F;&amp;gt;&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Je suis ravi de vous accueillir dans ce premier devlog dédié à mon nouveau projet : &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt;. Avant de plonger dans les détails de ce jeu vidéo en développement, permettez-moi de me présenter. Je m&amp;#x27;appelle Dylan, j&amp;#x27;ai 25 ans à l&amp;#x27;heure où je vous écris ces lignes et je suis actuellement développeur web back-end. J&amp;#x27;ai commencé la programmation aux alentours de 12~13 ans et je suis passionné de tout ce qui touche de près ou de loin à l&amp;#x27;informatique. J&amp;#x27;ai pu, au travers de ses nombreuses années, développer un certain nombre de projets de toutes tailles, dans plein de domaine lié au développement : application web, mobile, cybersécurité, développement système, réseaux, etc., mais je n&amp;#x27;ai jamais vraiment touché au développement de jeu vidéo.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;C&amp;#x27;est un domaine qui m&amp;#x27;a toujours intéressé, car j&amp;#x27;y joue pas mal d&amp;#x27;une part, mais également parce que c&amp;#x27;est un domaine qui dégage beaucoup de techniques et de mécanique tout à fait fascinante et qui représente à mes yeux un vrai challenge et une source débordante de nouvelle chose à apprendre. J&amp;#x27;ai donc décidé de me lancer dans le développement d&amp;#x27;un jeu vidéo qui me trotte dans la tête depuis un petit moment du nom de &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt;, que vous allez pouvoir suivre au travers de devlog régulier que je posterai ici.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Ceci étant dit, je ne suis pas un très bon rédacteur, loin de là, mais j&amp;#x27;avais à cœur de vous partager chaque étape de l&amp;#x27;avancement de mon projet, les coulisses de mon parcours de développement, partager mes découverts, mes défis et mes réussites. C&amp;#x27;est pourquoi je compte maintenir ce petit blog avec régularité et le rendre aussi convivial que possible pour que vous puissiez vous sentir chez vous.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;J&amp;#x27;espère que vous serez aussi enthousiastes que moi à l&amp;#x27;idée de suivre l&amp;#x27;évolution de &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt; et que la rédaction de ces devlogs vous donnera envie d&amp;#x27;y jouer ou même envie de créer votre propre jeu qui sait !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Je vous invite à poser vos questions et à partager vos idées via mes différents canaux de communication présents sur la page d&amp;#x27;accueil de ce site. Restez à l&amp;#x27;affût, car je prépare déjà le prochain devlog où je parlerai des prémices de l&amp;#x27;idée de &amp;lt;strong&amp;gt;Villager&amp;lt;&amp;#x2F;strong&amp;gt; et de mes premiers pas dans le développement de jeu vidéo.&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Merci d&amp;#x27;avoir pris le temps de me lire !&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;À la prochaine,&amp;lt;&amp;#x2F;p&amp;gt;
+&amp;lt;p&amp;gt;Dylan.&amp;lt;&amp;#x2F;p&amp;gt;
+</content>
+            </entry>
+            
+        
+    
+</feed>
