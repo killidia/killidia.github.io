@@ -2,7 +2,6 @@
 title = "Devlog #2 - Deux ans plus tard : un prototype jouable, des galères… et un nouveau souffle"
 slug = "devlog_2"
 date = "2025-12-31"
-draft = true
 
 [extra]
 toc = true
