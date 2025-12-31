@@ -13,6 +13,8 @@ Bonjour à toutes et à tous,
 Il s’est passé presque deux ans entre le dernier post sur ce blog et celui que vous êtes en train de lire.
 Autant dire que ce n’est pas vraiment la régularité que j’avais promise à l’époque 😅
 
+![oups](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDlqNmZjZ3g4djF3amd2dzZuOW9rN254dzY5Z2hmenpiOTU2ZzRubyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3yJNOJ2NQmu4w/giphy.gif)
+
 La vérité, c’est que durant cette période, il y a eu pas mal de choses compliquées côté perso, des changements de situation, des moments où il a fallu mettre le projet de côté… et d’autres où j’ai avancé par petites touches, souvent dans l’ombre.
 Mais malgré tout ça, **Villager** n’est pas mort. Bien au contraire.
 
@@ -44,15 +46,15 @@ J’ai donc dû plonger assez profondément dans :
 - chat vocal
 - etc.
 
-C’était formateur, passionnant et c'était exactement ce que je cherchais en commençant **Villager**. Mais il faut admettre que c'était chronophage.
+C’était formateur, passionnant et c'était exactement ce que je cherchais en commençant **Villager**. Mais il faut admettre que c'était aussi chronophage et pas compatible avec l'idée de "sortir un jeu".
 
 ## La couche réseau : bienvenue dans la douleur
 
 Ensuite est venue la partie réseau.
 
-Et là, clairement, ce n’était pas mon terrain de jeu préféré à la base, je me suis rendu compte qu'il y avait énormément de notion différente qu'on détaillera dans un devlog dédié.
+Et là, clairement, ce n’était pas mon terrain de jeu préféré à la base. Je me suis rendu compte qu'il y avait énormément de notions différentes qu'on détaillera dans un devlog dédié.
 
-Dans Bevy, tout fonctionne par plugins, J’ai donc fini par trouver un premier plugin qui m’a aidé à poser une base serveur temps réel, mais pour le reste… il a fallu tout faire à la main :
+Dans Bevy, tout fonctionne par plugins. J’ai donc fini par trouver un premier plugin qui m’a aidé à poser une base de serveur temps réel, mais pour le reste… il a fallu tout faire à la main :
 
 - réplication des entités,
 - synchronisation des états,
@@ -77,7 +79,9 @@ L’objectif était clair :
 Une fois toute l’infrastructure en place, j’ai attaqué le cœur du jeu.
 Et contre toute attente, les mécaniques de gameplay ont été la partie la plus rapide.
 
-Avec le design pattern ECS, la gestion des états, le scheduler et plein d'autre concept de Bevy :
+![fast](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDZrODdrMTJ6bHlpbTk5c3EzZnE1OTdiYzJnamJmMHd3dW02OGh3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/B1uajA01vvL91Urtsp/giphy.gif)
+
+Avec le design pattern ECS, la gestion des états, le scheduler et plein d'autres concepts de Bevy :
 
 - déplacements des joueurs,
 - spawn des joueurs,
@@ -103,52 +107,61 @@ Résultat :
 
 - aucun point d’intérêt clair sur la map,
 - un level design difficile à concevoir,
-- et un gameplay pas très intéressant pour les joueurs.
+- et un gameplay peu intéressant pour les joueurs.
 
 J’ai donc décidé de revoir ça en profondeur.
 
 ### La solution : les PNJ
 
-Plutôt que du full aléatoire, j’ai introduit des PNJ placés à des endroits précis de la map, avec une vraie réflexion sur la nivagation et les zones clés.
+Plutôt que du full aléatoire, j’ai introduit des PNJ placés à des endroits précis de la map, avec une vraie réflexion sur la navigation et les zones clés.
 
 Le principe est le suivant :
 
-la partie se déroule sur une nuit, et à intervalles réguliers, certains PNJ “se réveillent”.
+La partie se déroule sur une nuit, et à intervalles réguliers, certains PNJ « se réveillent ».
 
 Lorsqu’un PNJ est réveillé, un villageois peut aller lui parler pour récupérer un objet.
 
 Exemple concret :
 
-la Voyante est présente dès le début, au village, mais elle dort. Après un certain temps, elle se réveille, un joueur peut alors récupérer l’Orbe de la Voyante en interagissant avec elle.
+La Voyante est présente dès le début, au village, mais elle dort. Après un certain temps, elle se réveille, et un joueur peut alors récupérer l’Orbe de la Voyante en interagissant avec elle.
 
-Ce changement permet de créer des points d'intéret sur la map et une navigation clair entre ces points et oblige les villageois à bouger afin d'obtenir des objets. Ça permet également de créer des stratégies pour obtenir les objets ou à l'inverse piéger les autres joueurs.
+Ce changement permet de créer des points d’intérêt sur la map, une navigation claire entre ces points, et oblige les villageois à se déplacer afin d’obtenir des objets.
+Cela permet également de créer des stratégies pour obtenir les objets ou, à l’inverse, piéger les autres joueurs.
 
 ## Bevy évolue vite… très vite
 
-Bevy est un moteur qui évolu très vite avec une grosse mise à jour tous les 3 mois environ.
+Bevy est un moteur qui évolue très vite, avec une grosse mise à jour tous les trois mois environ.
 
-Ce qui est très bien ! les mises à jour sont conséquentent et j'adore me prendre un café avec une petite madeleine devant le changelog super bien rédigé et illustré. La communauté et grandissante avec plein de plugins pour couvrir beaucoup de concept qui pourrait être manquant ou encore trop récent dans le moteur.
+Ce qui est très bien ! Les mises à jour sont conséquentes, et j’adore me prendre un café avec une petite madeleine devant le changelog, super bien rédigé et illustré.
+La communauté est grandissante, avec plein de plugins pour couvrir beaucoup de concepts qui pouvaient être manquants ou encore trop récents dans le moteur.
 
-Ceci dit j'ai écrit des tonnes de ligne de code (très formateur) qui aujourd'hui ne servent plus à rien comme par exemple :
+Ceci dit, j’ai écrit des tonnes de lignes de code (très formateur) qui aujourd’hui ne servent plus à rien, comme par exemple :
 
-- la couche réseau, j'ai un plugins qui gère quasiment tout
-- des éléments d'UI comme les text input, qui n'existait pas du tout au début
-- plein de shaders pour avoir des borders, radius ou de meilleurs effets 3D
-- et tout les changements de version en version de Bevy, car étant un moteur en cours de développement la syntaxe change assez régulièrement
+- la couche réseau (il existe maintenant des plugins qui gèrent quasiment tout),
+- des éléments d’UI comme les champs de texte, qui n’existaient pas du tout au début,
+- plein de shaders pour avoir des bordures, des arrondis ou de meilleurs effets 3D,
+- et tous les changements de version en version de Bevy, car étant un moteur en cours de développement, la syntaxe change assez régulièrement.
 
 ## Un prototype moche... mais complet !
 
-Aujourd'hui d'un point de vue technique, le protype est terminé. J’ai même pu faire quelques tests avec mon cercle d'amis. Les resultats sont positifs et ça fait du bien après tant de galère !!
+Aujourd'hui d'un point de vue technique, le protype est terminé. J’ai même pu faire quelques tests avec mon cercle d'amis. Les resultats sont positifs et ça fait du bien après tant de galères !!
 
-Visuellement c'est pas fou du tout, on est sur des tic-tac et des blocs gris, mais la boucle de gameplay est complète ainsi que la gestion des groupes, le matchmaking et le chat vocal de proximité (qui a était une purge à dev !).
+![lobby](../images/devlog_2/lobby.png)
+![rol screen](../images/devlog_2/role_screen.png)
+![in_game](../images/devlog_2/in_game.png)
+
+Visuellement, ce n’est pas fou du tout : on est sur des tic-tac et des blocs gris.
+Mais la boucle de gameplay est complète, tout comme la gestion des groupes, le matchmaking et le chat vocal de proximité (qui a été une purge à développer !).
 
 ## Le vrai mur
 
-Une fois le prototype fini, il était temps de chercher une Direction artistique et cette partie m'a pris... des mois. Littéralement.
+![the wall](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzZ0cmNkOGs4eHdzeDh6M3l0ZGk0bmNydnVkM29pZmJrdGRqaXd6OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mIvrv5Qe0kHlu/giphy.gif)
+
+Une fois le prototype fini, il était temps de chercher une direction artistique et cette partie m'a pris... des mois. Littéralement.
 
 pourquoi !?
 
-Et bien, parceque j'ai erte des bases en dessin, des bases en modélisation 3d mais ce n'est ni mon métier, ni ma passion ! Et entre les concepts art, la modélisation 3d, les animations, la recherche d'un style cohérent et personnel, c'était beaucoup trop pour moi...
+Et bien, j'ai certe des bases en dessin, des bases en modélisation 3d mais ce n'est ni mon métier, ni ma passion ! Et entre les concepts art, la modélisation 3d, les animations, la recherche d'un style cohérent et personnel, c'était beaucoup trop pour moi...
 
 Resultat : démotivation, stagnation, et très peu de code écrit pendant près d'un an.
 
@@ -165,11 +178,16 @@ Le principe :
 
 c'est un style qu’on peut retrouver dans des jeux comme Cult of the Lamb ou Don’t Starve que j'adore.
 
+![cotl](../images/devlog_2/cotl.jpg)
+![don't starve](../images/devlog_2/dont_starve.jpg)
+
 j'ai donc commencé à designer ma map, les points d'intérêt, créer quelques assets (je détaillerai mon process de création dans un devlog) et aujourd’hui, j’ai :
 
 - une direction artistique qui me plaît et qui me ressemble,
 - quelque chose de cohérent,
 - et surtout… l’envie de continuer.
+
+![work in progress map](../images/devlog_2/my_map.png)
 
 ## Conclusion
 
