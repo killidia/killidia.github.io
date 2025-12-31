@@ -1,0 +1,13 @@
+name = "anemone"
+description = "Nearly no-Javascript, efficient, minimal theme."
+license = "MIT"
+homepage = "https://github.com/Speyll/anemone"
+min_version = "0.4.0"
+demo = "https://anemone.pages.dev"
+
+[extra]
+
+
+[author]
+name = "Lyes 'Speyll'"
+homepage = "https://speyllsite.pages.dev/"

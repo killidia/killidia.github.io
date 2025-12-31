@@ -1,0 +1,22 @@
+base_url = "https://killidia.github.io"
+
+title = "Dylan Adam"
+description = "Je suis un développeur passionné qui aime partager mes connaissances et mes expériences avec les autres. Je suis actuellement en train de travailler sur un nouveau projet appelé Villager, qui est un jeu de rôle inspiré d'Among Us et du loup-garou. Je suis ravi de partager plus de détails sur ce projet dans les prochains mois."
+
+theme = "anemone"
+
+default_language = "fr"
+
+generate_feed = true
+
+[extra]
+
+header_nav = [
+    { name = "/home/", url = "/" },
+    { name = "/devlogs/", url = "/devlogs" },
+]
+
+[markdown]
+highlight_code = true
+highlight_theme = "two-dark"
+
