@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+    <title>Dylan Adam</title>
+    <subtitle>Je suis un développeur passionné qui aime partager mes connaissances et mes expériences avec les autres. Je suis actuellement en train de travailler sur un nouveau projet appelé Villager, qui est un jeu de rôle inspiré d&#x27;Among Us et du loup-garou. Je suis ravi de partager plus de détails sur ce projet dans les prochains mois.</subtitle>
+    <link href="https://killidia.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://killidia.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-08-09T00:00:00+00:00</updated>
+    <id>https://killidia.github.io/atom.xml</id>
+    <entry xml:lang="fr">
+        <title>Devlog #1 - Villager : le tout, tout début !</title>
+        <published>2023-08-09T00:00:00+00:00</published>
+        <updated>2023-08-09T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://killidia.github.io/devlogs/devlog-1-villager-le-tout-debut/" type="text/html"/>
+        <id>https://killidia.github.io/devlogs/devlog-1-villager-le-tout-debut/</id>
+        
+        <content type="html">&lt;p&gt;Chers lecteurs et lectrices,&lt;&#x2F;p&gt;
+&lt;p&gt;Dans ce deuxième devlog, je souhaite partager avec vous les prémices de l&#x27;idée qui a donné naissance à Villager ainsi que mes premiers pas dans le développement de jeu vidéo.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-les-premices&quot;&gt;1. Les prémices&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;inspiration-1-among-us&quot;&gt;Inspiration 1 : Among Us&lt;&#x2F;h3&gt;
+&lt;p&gt;La première fois que j&#x27;ai pensé à Villager, c&#x27;est lors d&#x27;une soirée assez frustrante à jouer à Among Us, où j&#x27;ai été innocent tout au long de la soirée et où je me faisais éliminer systématiquement dès le début. Je me suis donc dit &amp;quot;et si nous avions un jeu similaire où les innocents pourraient se défendre un peu plus à la manière de Garry&#x27;s Mod et son excellent mode Murder qui donne un pistolet à un des innocents&amp;quot;. Et cette simple idée a été le point de départ de ce qui allait devenir Villager.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;inspiration-2-les-battle-royal&quot;&gt;Inspiration 2 : Les Battle Royal&lt;&#x2F;h3&gt;
+&lt;p&gt;Ma deuxième source d&#x27;inspiration majeure pour Villager provient des jeux Battle Royal, avec Fortnite en tête, étant un joueur assidu moi-même. J&#x27;ai trouvé l&#x27;idée de permettre aux &amp;quot;innocents&amp;quot; de chercher des armes et des artefacts qui seraient éparpillés aléatoirement à la manière d&#x27;un Battle Royal pour se défendre contre les &amp;quot;imposteurs&amp;quot; super intéressant et proposeraient un gameplay plus sympa que de faire des quêtes en attendant de se faire éliminer comme sur Among Us (oui, j&#x27;ai toujours un peu de haine...).&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;inspiration-3-les-loup-garou-de-thiercelieux&quot;&gt;Inspiration 3 : Les Loup-Garou de Thiercelieux&lt;&#x2F;h3&gt;
+&lt;p&gt;Après avoir eu l&#x27;idée, après avoir trouvé un début de gameplay sympathique, il me fallait un univers captivant pour que les joueurs puissent se plonger pleinement dans l&#x27;expérience du jeu. En tant que grand fan des Loup-Garou de Thiercelieux, au point d&#x27;avoir un tatouage représentant l&#x27;un des rôles du jeu, j&#x27;ai pensé que ce serait une excellente base pour mon projet.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;en-resume&quot;&gt;En résumé&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;..&#x2F;images&#x2F;devlog_1&#x2F;inspirations.png&quot; alt=&quot;inspirations&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;En résumé ça donne quoi, Villager est un jeu d&#x27;imposteur ou les villageois devront survivre aux loups-garous et les loups-garous devront éliminer tous les villageois avant la fin de la nuit. Les villageois devront se faire confiance entre eux, récupérer des armes pour se défendre ou trouver des artefacts qui représenteront les différents rôles que l&#x27;on retrouve dans les loups-garous de thiercelieux comme l&#x27;orbe de la voyante, l&#x27;épée rouiller du chevalier ou encore l&#x27;arc de cupidon. Les Loups-garous devront quant à eux user de ruse et de tromperie pour réussir leur sombre dessein.&lt;&#x2F;p&gt;
+&lt;p&gt;Le gameplay sera sublimé par une direction artistique minimaliste, mais super efficace, par une ambiance prenante et légèrement oppressante, ainsi que des fonctionnalités comme le chat vocal de proximité pour des interactions sociale efficace (Bon... sans trop vous spoiler, c&#x27;est facile à écrire, mais pas facile à faire !!) !&lt;&#x2F;p&gt;
+&lt;p&gt;Il m&#x27;aura fallu quelques mois pour en arriver là et ce n&#x27;était que le tout début du projet. Après avoir posé un premier gameplay sur &amp;quot;papier&amp;quot; je me suis naturellement dit qu&#x27;il fallait que je développe un prototype afin d&#x27;expérimenter et de vérifier que mon idée était viable. C&#x27;est le moment de faire les premiers choix techniques !&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-premier-choix-technique-le-moteur&quot;&gt;2. Premier choix technique : Le moteur&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ureal-engine-vs-unity&quot;&gt;Ureal Engine vs Unity&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;..&#x2F;images&#x2F;devlog_1&#x2F;ue-vs-unity.png&quot; alt=&quot;ue-vs-unity&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;En m&#x27;engageant dans le domaine du jeu vidéo, je ne voulais pas juste sortir mon jeu pour combler une simple frustration, mais je voulais vraiment en profiter pour en apprendre un maximum sur le développement de jeu vidéo. Pour cela, j&#x27;étais à la recherche d&#x27;un moteur de jeu qui me permettrait d&#x27;explorer en profondeur les différentes couches de la création de jeux, des mécanismes de base jusqu&#x27;aux aspects avancés. C&#x27;est ainsi que j&#x27;ai exclu dès le départ des géants comme Unreal Engine et Unity, qui, bien qu&#x27;ils offrent des fonctionnalités puissantes, demandent des licences coûteuses pour la commercialisation. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;godot&quot;&gt;Godot ?&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;..&#x2F;images&#x2F;devlog_1&#x2F;godot.png&quot; alt=&quot;godot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Après avoir écarté UE et Unity, je me suis penché sur d&#x27;autres options open source. Bien que Godot soit un excellent moteur, il ne répondait pas à mon premier critère : la possibilité d&#x27;apprendre en partant de presque zéro. De plus, au moment de mon choix, Godot avait encore des gros problèmes de performances, ce qui constituait un élément rédhibitoire pour moi.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;le-langage-rust&quot;&gt;Le langage Rust&lt;&#x2F;h3&gt;
+&lt;p&gt;En tant que développeur, le choix du langage de programmation est essentiel pour se sentir à l&#x27;aise et productif. Pour ma part, Rust est mon langage préféré &lt;strong&gt;DE TOUS LES TEMPS !!!!!!&lt;&#x2F;strong&gt; je me calme... Il offre un équilibre parfait entre performance, sécurité et ergonomie, il possède beaucoup de fonctionnalité pratique et un peu overkill, son écosystème est très vaste et les personnes qui le peuplent sont incroyablement gentils et intelligents. J&#x27;avais donc pour objectif de monter en compétences sur Rust tout en développant des jeux, et cela a grandement influencé mon choix de moteur de jeu.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;le-moteur-bevy&quot;&gt;Le moteur Bevy&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;..&#x2F;images&#x2F;devlog_1&#x2F;bevy_logo_dark.png&quot; alt=&quot;bevy-game-engine&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;C&#x27;est alors que j&#x27;ai découvert Bevy, une véritable perle rare répondant à tous mes critères et bien plus encore. Tout d&#x27;abord, Bevy est un moteur de jeu open source, ce qui signifie que je peux accéder à son code source et explorer en profondeur son fonctionnement interne, ce qui est crucial pour mon apprentissage.&lt;&#x2F;p&gt;
+&lt;p&gt;En outre, Bevy se démarque par ses performances grâce à sa conception basée sur le design pattern ECS (Entity-Component-System), le moteur gère efficacement les entités et les composants, optimisant ainsi le rendu et le traitement des données, ce qui est essentiel pour créer des jeux fluides et réactifs (mais on y reviendra plus en détail prochainement). &lt;&#x2F;p&gt;
+&lt;p&gt;Choisir Bevy me permettait également de m&#x27;impliquer dans son développement. Le moteur étant en cours de développement actif, j&#x27;avais la possibilité de contribuer à son évolution, ce qui représentait une chance inestimable pour approfondir mes connaissances et partager ma passion avec la communauté Bevy.&lt;&#x2F;p&gt;
+&lt;p&gt;En conclusion, en choisissant Bevy, j&#x27;ai trouvé le moteur de jeu idéal pour réaliser mon projet tout en apprenant un maximum de choses dans le développement de jeu vidéo. Grâce à sa gratuité, son statut open source, sa performance, son design pattern ECS et son implémentation en Rust, Bevy réunit tous les éléments clés qui ont guidé mon choix.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;media.giphy.com&#x2F;media&#x2F;3o6Ei2yv8fqpR3nJG8&#x2F;giphy.gif&quot; alt=&quot;work hard&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Le moteur de jeu choisi, il est grand temps de commencer le développement du premier prototype, mais nous verront ça dans le prochain devlog qui y sera consacré et de toutes les galères que j&#x27;ai pu rencontrer pendant ce processus ! Je tiens également à préciser qu&#x27;à partir de maintenant les devlogs seront un peu plus techniques.&lt;&#x2F;p&gt;
+&lt;p&gt;Merci d&#x27;avoir pris le temps de me lire !&lt;&#x2F;p&gt;
+&lt;p&gt;A la prochaine,&lt;&#x2F;p&gt;
+&lt;p&gt;Dylan.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Devlog #0 - Introduction</title>
+        <published>2023-07-13T00:00:00+00:00</published>
+        <updated>2023-07-13T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://killidia.github.io/devlogs/introduction/" type="text/html"/>
+        <id>https://killidia.github.io/devlogs/introduction/</id>
+        
+        <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;media.giphy.com&#x2F;media&#x2F;xTiIzJSKB4l7xTouE8&#x2F;giphy.gif&quot; alt=&quot;Hello Gif&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Je suis ravi de vous accueillir dans ce premier devlog dédié à mon nouveau projet : &lt;strong&gt;Villager&lt;&#x2F;strong&gt;. Avant de plonger dans les détails de ce jeu vidéo en développement, permettez-moi de me présenter. Je m&#x27;appelle Dylan, j&#x27;ai 25 ans à l&#x27;heure où je vous écris ces lignes et je suis actuellement développeur web back-end. J&#x27;ai commencé la programmation aux alentours de 12~13 ans et je suis passionné de tout ce qui touche de près ou de loin à l&#x27;informatique. J&#x27;ai pu, au travers de ses nombreuses années, développer un certain nombre de projets de toutes tailles, dans plein de domaine lié au développement : application web, mobile, cybersécurité, développement système, réseaux, etc., mais je n&#x27;ai jamais vraiment touché au développement de jeu vidéo.&lt;&#x2F;p&gt;
+&lt;p&gt;C&#x27;est un domaine qui m&#x27;a toujours intéressé, car j&#x27;y joue pas mal d&#x27;une part, mais également parce que c&#x27;est un domaine qui dégage beaucoup de techniques et de mécanique tout à fait fascinante et qui représente à mes yeux un vrai challenge et une source débordante de nouvelle chose à apprendre. J&#x27;ai donc décidé de me lancer dans le développement d&#x27;un jeu vidéo qui me trotte dans la tête depuis un petit moment du nom de &lt;strong&gt;Villager&lt;&#x2F;strong&gt;, que vous allez pouvoir suivre au travers de devlog régulier que je posterai ici.&lt;&#x2F;p&gt;
+&lt;p&gt;Ceci étant dit, je ne suis pas un très bon rédacteur, loin de là, mais j&#x27;avais à cœur de vous partager chaque étape de l&#x27;avancement de mon projet, les coulisses de mon parcours de développement, partager mes découverts, mes défis et mes réussites. C&#x27;est pourquoi je compte maintenir ce petit blog avec régularité et le rendre aussi convivial que possible pour que vous puissiez vous sentir chez vous.&lt;&#x2F;p&gt;
+&lt;p&gt;J&#x27;espère que vous serez aussi enthousiastes que moi à l&#x27;idée de suivre l&#x27;évolution de &lt;strong&gt;Villager&lt;&#x2F;strong&gt; et que la rédaction de ces devlogs vous donnera envie d&#x27;y jouer ou même envie de créer votre propre jeu qui sait !&lt;&#x2F;p&gt;
+&lt;p&gt;Je vous invite à poser vos questions et à partager vos idées via mes différents canaux de communication présents sur la page d&#x27;accueil de ce site. Restez à l&#x27;affût, car je prépare déjà le prochain devlog où je parlerai des prémices de l&#x27;idée de &lt;strong&gt;Villager&lt;&#x2F;strong&gt; et de mes premiers pas dans le développement de jeu vidéo.&lt;&#x2F;p&gt;
+&lt;p&gt;Merci d&#x27;avoir pris le temps de me lire !&lt;&#x2F;p&gt;
+&lt;p&gt;À la prochaine,&lt;&#x2F;p&gt;
+&lt;p&gt;Dylan.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

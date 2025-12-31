@@ -1,5 +1,8 @@
 +++
 title = "Overview Post"
+[extra]
+display_published = false
+toc = false
 +++
 
 Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus.
@@ -60,6 +63,12 @@ Now a table:
 {{ img(id="https://uploads-ssl.webflow.com/5ff0b3326e5782a256714165/638b6f3a3d8d2e6bad1cb03b_Random22.1.jpg", alt="theme logo") }}
 
 random image of a dog[^4]
+
+## Multilanguage support
+- 🥣 [This site but in french (only this page and the homepage is translated)](/fr)
+
+## Webrings
+  - 🈯 {{ webring(prev="#", webring="#", webringName="Random Webring", next="#") }}
 
 ---
 
